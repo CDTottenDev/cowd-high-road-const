@@ -1,35 +1,23 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import { Analytics } from '@vercel/analytics/react'
-import { Header } from './components/header'
-import { Footer } from './components/footer'
-import { ThemeProvider } from 'next-themes'
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import "./globals.css"
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'Your Site Name',
-  description: 'Your site description',
+  title: "High Road Construction",
+  description: "Quality construction services for residential, commercial, and industrial projects",
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-          <Analytics />
-        </ThemeProvider>
-      </body>
+    <html lang="en" className="scroll-smooth overflow-x-hidden">
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
